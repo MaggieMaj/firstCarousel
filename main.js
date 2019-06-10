@@ -2,7 +2,6 @@ var allButtons = $('#buttons > span')
 
 for (let i = 0; i < allButtons.length; i++) {
   $(allButtons[i]).on('click', function(x) {
-    console.log('hi')
     var index = $(x.currentTarget).index()
     var p = index * -300
     $('#images').css({
@@ -13,23 +12,22 @@ for (let i = 0; i < allButtons.length; i++) {
   })
 }
 
-
-
 var n = 0;
 var size = allButtons.length
-palySlide(n % size)
+playSide(n % size)
 
 var timerId = setTimer()
 
 function setTimer() {
   return setInterval(() => {
     n += 1
-    palySlide(n % size)
+    playSide(n % size)
   }, 1000)
 }
 
-function playSlide(index)
-allButtons.eq(index).trigger('click')
+function playSide(index){
+  allButtons.eq(index).trigger('click')
+}
 
 function activeButton($button) {
   $button
