@@ -2,37 +2,39 @@ var allButtons = $('#buttons > span')
 
 for (let i = 0; i < allButtons.length; i++) {
   $(allButtons[i]).on('click', function(x) {
+    console.log('hi')
     var index = $(x.currentTarget).index()
     var p = index * -300
     $('#images').css({
-      transform: 'translateX(' + p + 'px)'
+      transform: 'translate(' + p + 'px)'
     })
     n = index
     activeButton(allButtons.eq(n))
   })
 }
 
+
+
 var n = 0;
 var size = allButtons.length
-playSlide(n % size)
+palySlide(n % size)
 
 var timerId = setTimer()
 
-function setTimer(){
+function setTimer() {
   return setInterval(() => {
-  n += 1
-  playSlide(n % size)
-}, 1000)
+    n += 1
+    palySlide(n % size)
+  }, 1000)
 }
 
 function playSlide(index)
 allButtons.eq(index).trigger('click')
-    activeButton(allButtons.eq(index))
 
 function activeButton($button) {
   $button
-  .addClass('red')
-  .siblings('.red').removeClass('red')
+    .addClass('red')
+    .siblings('.red').removeClass('red')
 }
 
 $('.window').on('mouseenter', function() {
